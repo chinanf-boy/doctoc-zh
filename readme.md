@@ -13,7 +13,7 @@
 
 ---
 
-## 校对 🀄️
+## 校对 ✅
 
 <!-- doc-templite START generated -->
 <!-- repo = 'thlorenz/doctoc' -->
@@ -47,6 +47,7 @@
 
 <!-- START doctoc generated TOC please keep comment here to allow auto update -->
 <!-- DON'T EDIT THIS SECTION, INSTEAD RE-RUN doctoc TO UPDATE -->
+
 **Contents**
 
 - [安装](#%E5%AE%89%E8%A3%85)
@@ -54,14 +55,12 @@
   - [将 TOC 添加到目录和子目录中的所有文件](#%E5%B0%86-toc-%E6%B7%BB%E5%8A%A0%E5%88%B0%E7%9B%AE%E5%BD%95%E5%92%8C%E5%AD%90%E7%9B%AE%E5%BD%95%E4%B8%AD%E7%9A%84%E6%89%80%E6%9C%89%E6%96%87%E4%BB%B6)
   - [毫不费力地更新现有的 Doctoc TOCs](#%E6%AF%AB%E4%B8%8D%E8%B4%B9%E5%8A%9B%E5%9C%B0%E6%9B%B4%E6%96%B0%E7%8E%B0%E6%9C%89%E7%9A%84-doctoc-tocs)
   - [将 TOC 添加到单个文件中](#%E5%B0%86-toc-%E6%B7%BB%E5%8A%A0%E5%88%B0%E5%8D%95%E4%B8%AA%E6%96%87%E4%BB%B6%E4%B8%AD)
-    - [实例](#%E5%AE%9E%E4%BE%8B)
   - [使用 Doctoc 生成与其他站点兼容的超链接](#%E4%BD%BF%E7%94%A8-doctoc-%E7%94%9F%E6%88%90%E4%B8%8E%E5%85%B6%E4%BB%96%E7%AB%99%E7%82%B9%E5%85%BC%E5%AE%B9%E7%9A%84%E8%B6%85%E9%93%BE%E6%8E%A5)
-    - [例子](#%E4%BE%8B%E5%AD%90)
   - [指定 TOC 的位置](#%E6%8C%87%E5%AE%9A-toc-%E7%9A%84%E4%BD%8D%E7%BD%AE)
   - [指定自定义 TOC 标题](#%E6%8C%87%E5%AE%9A%E8%87%AA%E5%AE%9A%E4%B9%89-toc-%E6%A0%87%E9%A2%98)
-  - [指定 TOC 条目的最大标题级别](#%E6%8C%87%E5%AE%9A-toc-%E6%9D%A1%E7%9B%AE%E7%9A%84%E6%9C%80%E5%A4%A7%E6%A0%87%E9%A2%98%E7%BA%A7%E5%88%AB)
+  - [指定 TOC 条目的最大 heading 级别](#%E6%8C%87%E5%AE%9A-toc-%E6%9D%A1%E7%9B%AE%E7%9A%84%E6%9C%80%E5%A4%A7-heading-%E7%BA%A7%E5%88%AB)
   - [打印到标准输出](#%E6%89%93%E5%8D%B0%E5%88%B0%E6%A0%87%E5%87%86%E8%BE%93%E5%87%BA)
-  - [作为一种用法`git`钩](#%E4%BD%9C%E4%B8%BA%E4%B8%80%E7%A7%8D%E7%94%A8%E6%B3%95git%E9%92%A9)
+  - [作为一个`git`钩子来使用](#%E4%BD%9C%E4%B8%BA%E4%B8%80%E4%B8%AAgit%E9%92%A9%E5%AD%90%E6%9D%A5%E4%BD%BF%E7%94%A8)
 
 <!-- END doctoc generated TOC please keep comment here to allow auto update -->
 
@@ -166,18 +165,22 @@ Here we'll discuss...
 
 ### 指定自定义 TOC 标题
 
-使用`--title`选项指定一个(markdown格式的)自定义 TOC 标题;`doctoc --title '**Contents**' .` 。从此,你可以简单`doctoc <file>`，就让 Doctoc 保留您指定的标题。(正如这个readme文件)
+使用`--title`选项指定一个(markdown 格式的)自定义 TOC 标题;`doctoc --title '**Contents**' .` 。从此,你可以简单`doctoc <file>`，就让 Doctoc 保留您指定的标题。(正如这个 readme 文件)
 
-或者,用换行符将标题省略,使用`--notitle`选项.这将简单地从 TOC 中删除标题.
+或者,你通过使用`--notitle`选项，用换行符将标题省略。简单地从 TOC 中删除标题.
 
-### 指定 TOC 条目的最大标题级别
+### 指定 TOC 条目的最大 heading 级别
 
-使用`--maxlevel`将 TOC 条目限制到标题的选项仅限于指定级别;`doctoc --maxlevel 3 .`
+> 如 `#` == **1**, `##` == **2** ...
 
+使用`--maxlevel`将 TOC 项 限制为指定级别;
+
+- `doctoc --maxlevel 3 .` (比如该 readme 的`#### 实例`并没有超链接)
+  
 默认情况下,
 
-- 没有限制限制格式的标题,
-- 而来自嵌入式 HTML 的标题仅限于 4 个级别.
+- 没有限制标题,
+- 而来自嵌入式 HTML 的标题(heading)限于 第 4 级.
 
 ### 打印到标准输出
 
@@ -185,9 +188,9 @@ Here we'll discuss...
 
 [ack]: http://beyondgrep.com/
 
-### 作为一种用法`git`钩
+### 作为一个`git`钩子来使用
 
-可以使用 Doctoc 作为[预提交](http://pre-commit.com)钩子使用以下配置:
+把 Doctoc 作为一个[pre-commit](http://pre-commit.com)钩子来使用，以下配置:
 
 ```yaml
 repos:
@@ -197,4 +200,4 @@ repos:
       - id: doctoc
 ```
 
-这将运行`doctoc`在提交文件时,确保保证 TOC 保持最新.
+这将在 git commit 文件时，运行`doctoc`,确保 TOC 保持最新.
